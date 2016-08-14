@@ -47,5 +47,9 @@
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "packagist": {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
     }
 }
