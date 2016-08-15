@@ -11,49 +11,14 @@
 |
 */
 
-Route::group(['prefix' => '/', 'as' => 'default'], function () {
-    Route::get('/', 'IndexController@getIndex');
+Route::get('/', 'IndexController@getIndex');
 
+Route::Controllers([
+    'order' => 'OrderController',
+]);
+
+Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
     Route::Controllers([
-        'order' => 'OrderController',
+        'setting' => 'SettingController',
     ]);
-
-    Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
-        Route::Controllers([
-            'setting' => 'SettingController',
-        ]);
-    });
 });
-
-
-Route::group(['prefix' => '/zh'], function () {
-    App::setLocale('zh');
-
-    Route::get('/', 'IndexController@getIndex');
-
-    Route::Controllers([
-        'order' => 'OrderController',
-    ]);
-
-    Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
-        Route::Controllers([
-            'setting' => 'SettingController',
-        ]);
-    });
-});
-
-Route::group(['prefix' => '/en'], function () {
-    App::setLocale('en');
-    Route::get('/', 'IndexController@getIndex');
-
-    Route::Controllers([
-        'order' => 'OrderController',
-    ]);
-
-    Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
-        Route::Controllers([
-            'setting' => 'SettingController',
-        ]);
-    });
-});
-

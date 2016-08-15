@@ -1,4 +1,5 @@
 /* overwrite bootstrap */
-.navbar-brand {
+.navbar-inverse .navbar-brand {
     padding: 15px;
+
 }

@@ -14,8 +14,17 @@ define(['jquery', 'jquery.cookie'], function ($) {
 
     $('#language').on('click', 'a', function(event) {
         var lang = $(this).data('lang');
-        $.cookie('lang', lang);
-        window.location.reload();
+
+        $.ajax({
+            url: '/service/setting/lang',
+            type: 'POST',
+            data: {
+                lang: lang
+            }
+        })
+        .always(function() {
+            window.location.reload();
+        });
     });
 
     return {

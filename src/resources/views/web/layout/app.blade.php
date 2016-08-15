@@ -15,6 +15,12 @@
     <link href="{{ asset('/static/css/base.css') }}" rel="stylesheet" />
     @show
 
+    <script type="text/javascript">
+        var require = {
+            urlArgs: "_v={{ config('config.app_version', '0.0.1') }}"
+        };
+    </script>
+
     @section('script')
     <script type="text/javascript" src="{{ asset('static/libs/require.js') }}" data-main="{{ asset('static/js/config.js') }}"></script>
     @show
@@ -22,7 +28,7 @@
 </head>
 <body>
     @section('header')
-    <nav class="navbar navbar-default">
+    <nav class="navbar  navbar-inverse">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -32,27 +38,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('homepage') }}">WebSite</a>
+                <a class="navbar-brand" href="{{ url('homepage') }}">{{ trans('app.website.name') }}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     @foreach (config('menu') as $menu => $category)
-                        @if (array_key_exists('children', $category) && $category['children'])
-                        <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.' . $menu . '.name') }}<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            @foreach($category['children'] as $key => $sub)
-                            <li><a href="{{ $sub['url'] }}">{{ trans('menu.' . $menu . '.children.' . $key . '.name') }}</a></li>
-                            @endforeach
-                        </ul>
-                        </li>
-                        @else
-                        <li class="active">
-                            <a href="{{ $category['url'] }}">{{ trans('menu.' . $menu . '.name') }}<span class="sr-only">(current)</span></a>
-                        </li>
-                        @endif
+                    @if (array_key_exists('children', $category) && $category['children'])
+                    <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.' . $menu . '.name') }}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach($category['children'] as $key => $sub)
+                        <li><a href="{{ url($sub['url']) }}">{{ trans('menu.' . $menu . '.children.' . $key . '.name') }}</a></li>
+                        @endforeach
+                    </ul>
+                    </li>
+                    @else
+                    <li class="active">
+                        <a href="{{ url($category['url']) }}">{{ trans('menu.' . $menu . '.name') }}<span class="sr-only">(current)</span></a>
+                    </li>
+                    @endif
                     @endforeach
                 </ul>
 
@@ -62,7 +68,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.language') }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" id="language">
                             @foreach(config('lang') as $lang => $value)
-                            <li><a href="#" data-lang="{{ $lang }}">{{ $value }}</a></li>
+                            <li><a href="javascript:void(0)" data-lang="{{ $lang }}">{{ $value }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -70,6 +76,8 @@
             </div>
         </div>
     </nav>
+    @show
+    @section('footer')
     @show
 </body>
 </html>
