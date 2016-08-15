@@ -1,14 +1,14 @@
 <?php
 return [
-    'Menu1' => [
-        'name' => 'Menu1_en',
+    'javascript' => [
+        'name' => 'Javascript',
         'children' => [
-            'menu1' => [
-                'name' => 'menu1_en',
+            'article' => [
+                'name' => 'Article',
             ],
-            'menu2' => [
-                'name' => 'menu2_en',
-            ],
+            'sort' => [
+                'name' => 'Sorting algorithm',
+            ]
         ],
     ],
     'Menu2' => [

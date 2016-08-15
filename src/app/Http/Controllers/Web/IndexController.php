@@ -6,6 +6,6 @@ use Illuminate\Http\Request;
 class IndexController extends BaseController
 {
     public function getIndex() {
-        return view('home');
+        return view('home')->with('p', 'ssssssss');
     }
 }

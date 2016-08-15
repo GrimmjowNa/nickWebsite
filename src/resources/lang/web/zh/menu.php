@@ -1,13 +1,13 @@
 <?php
 return [
-    'Menu1' => [
-        'name' => 'Menu1_zh',
+    'javascript' => [
+        'name' => 'Javascript',
         'children' => [
-            'menu1' => [
-                'name' => 'menu1_zh',
+            'article' => [
+                'name' => '文章',
             ],
-            'menu2' => [
-                'name' => 'menu2_zh',
+            'sort' => [
+                'name' => '排序算法',
             ],
         ],
     ],

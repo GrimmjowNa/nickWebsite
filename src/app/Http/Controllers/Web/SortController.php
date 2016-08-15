@@ -3,12 +3,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Web\BaseController;
 
-class OrderController extends BaseController
+class SortController extends BaseController
 {
-    public function __construct() {
-
-    }
     public function getIndex() {
-        return 'order list';
+        return view('sort.list');
     }
 }

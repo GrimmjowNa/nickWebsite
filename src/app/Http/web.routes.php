@@ -13,9 +13,11 @@
 
 Route::get('/', 'IndexController@getIndex');
 
-Route::Controllers([
-    'order' => 'OrderController',
-]);
+Route::group(['prefix' => 'js'], function () {
+    Route::Controllers([
+        'sort' => 'SortController',
+    ]);
+});
 
 Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
     Route::Controllers([

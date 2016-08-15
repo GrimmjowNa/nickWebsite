@@ -55,7 +55,7 @@
                     </ul>
                     </li>
                     @else
-                    <li class="active">
+                    <li>
                         <a href="{{ url($category['url']) }}">{{ trans('menu.' . $menu . '.name') }}<span class="sr-only">(current)</span></a>
                     </li>
                     @endif

@@ -1,13 +1,13 @@
 <?php
 return [
-    'Menu1' => [
+    'javascript' => [
         'url' => '#',
         'children' => [
-            'menu1' => [
-                'url' => '#menu1',
+            'article' => [
+                'url' => '#',
             ],
-            'menu2' => [
-                'url' => '#menu2',
+            'sort' => [
+                'url' => '/js/sort',
             ],
         ],
     ],
