@@ -8,4 +8,8 @@ class SortController extends BaseController
     public function getIndex() {
         return view('sort.list');
     }
+
+    public function getStraightInsertionSort() {
+        return view('sort.straight-insertion-sort');
+    }
 }

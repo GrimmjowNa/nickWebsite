@@ -14,6 +14,7 @@ require.config({
         'jquery': 'libs/jquery/jquery-2.1.4.min',
         'jquery.cookie': 'libs/jquery/jquery-cookie',
         'bootstrap': 'libs/bootstrap/js/bootstrap.min',
+        'underscore': 'libs/underscore-min'
     }
 });
 

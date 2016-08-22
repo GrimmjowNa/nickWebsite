@@ -28,7 +28,7 @@
 </head>
 <body>
     @section('header')
-    <nav class="navbar  navbar-inverse">
+    <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('homepage') }}">{{ trans('app.website.name') }}</a>
+                <a class="navbar-brand" href="{{ url('/') }}">{{ trans('app.website.name') }}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -77,6 +77,12 @@
         </div>
     </nav>
     @show
+
+    <div class="col-sm-10 col-sm-offset-1">
+        @section('main')
+        @show
+    </div>
+
     @section('footer')
     @show
 </body>
