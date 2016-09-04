@@ -11,8 +11,8 @@ return [
             ],
         ],
     ],
-    'Menu2' => [
-        'name' => 'Menu1_zh',
+    'PHP' => [
+        'name' => 'PHP',
         'children' => [
             'menu1' => [
                 'name' => 'menu1_zh',
@@ -22,8 +22,11 @@ return [
             ],
         ],
     ],
-    'Menu3' => [
-        'name' => 'Menu3_zh',
+    'English' => [
+        'name' => '英语',
+    ],
+    'Other' => [
+        'name' => '其它'
     ],
 
     'language' => '语言',

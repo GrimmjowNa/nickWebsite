@@ -11,7 +11,7 @@ return [
             ],
         ],
     ],
-    'Menu2' => [
+    'PHP' => [
         'url' => '#',
         'children' => [
             'menu1' => [
@@ -22,7 +22,10 @@ return [
             ],
         ],
     ],
-    'Menu3' => [
+    'English' => [
+        'url' => '##',
+    ],
+    'Other' => [
         'url' => '##',
     ],
 ];
