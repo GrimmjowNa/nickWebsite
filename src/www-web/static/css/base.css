@@ -1,4 +1,12 @@
 /* overwrite bootstrap */
+.navbar {
+    border-radius: 0;
+}
+
 .navbar-inverse .navbar-brand {
     padding: 15px;
+}
+
+.main-body {
+    min-height: 80vh;
 }

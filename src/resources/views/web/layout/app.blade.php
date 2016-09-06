@@ -78,12 +78,19 @@
     </nav>
     @show
 
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-10 col-sm-offset-1 main-body">
         @section('main')
         @show
     </div>
 
     @section('footer')
+    <footer>
+        <div class="container copyright">
+            <div class="row text-center">
+                ©2016.08 - {{ date('Y.m') }} NickNa 版权所有 naguangqing@qq.com
+            </div>
+        </div>
+    </footer>
     @show
 </body>
 </html>

@@ -12,4 +12,8 @@ class SortController extends BaseController
     public function getStraightInsertionSort() {
         return view('sort.straight-insertion-sort');
     }
+
+    public function getShellSort() {
+        return view('sort.shell-sort');
+    }
 }

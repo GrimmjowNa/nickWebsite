@@ -6,19 +6,19 @@
 @endsection
 
 @section('script')
-<script type="text/javascript" src="{{ asset('static/libs/require.js') }}" data-main="{{ asset('static/js/sort/straight-insert.js') }}"></script>
+<script type="text/javascript" src="{{ asset('static/libs/require.js') }}" data-main="{{ asset('static/js/sort/shell-sort.js') }}"></script>
 @endsection
 
 @section('main')
 <ol class="breadcrumb">
     <li><a href="{{ url('/') }}">主页</a></li>
     <li><a href="{{ url('/js/sort') }}">排序算法</a></li>
-    <li>插入排序—直接插入排序(Straight Insertion Sort)</li>
+    <li>插入排序—希尔排序(Shell`s Sort)</li>
 </ol>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">插入排序—直接插入排序 (Straight Insertion Sort)</h3>
+        <h3 class="panel-title">插入排序—希尔排序(Shell`s Sort)</h3>
     </div>
     <div class="panel-body">
         <ul class="list-group">
