@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Vim practice</title>
+    <style type="text/css">
+        .container {
+            width: 800px;
+            min-height: 600px;
+            margin: 50px auto;
+        }
+
+        .panel-default {
+            border-color: #ddd;
+        }
+
+        .panel {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
+        }
+
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+
+        .panel-body {
+            padding: 15px;
+        }
+
+        .form-group {
+            padding: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Vim快捷键练习-答对3次通过,当前答对(<span id="currentNum"></span>)次,剩余(<span id="num"></span>)个未通过
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    描述: <span id="desc"></span>
+                </div>
+                <div class="form-group">
+                    按键: <span id="userAnswer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var config = {
+            time: 1500,
+            passTime: 3,
+        };
+
+        Array.prototype.remove=function(index) {
+            if(isNaN(index) || index >= this.length){
+                return false;
+            }
+
+            for(var i = index; i < this.length - 1; i++) {
+                this[i] = this[i + 1]
+            }
+
+            this.length-=1;
+        };
+
+        var exCommond = [
+                {
+                    keys: [':', 'w'],
+                    desc: 'writeNoteLeave'
+                },
+                {
+                    keys: [':', 'w', '!',' ', 'f', 'i', 'l', 'e'],
+                    desc: 'writeCoverFile'
+                },
+                {
+                    keys: [':', 'w', ' ', 'n', 'e', 'w', 'F', 'i', 'l', 'e'],
+                    desc: 'writeToNewFile'
+                },
+
+                {
+                    keys: [':', 'e', '!'],
+                    desc: 'exitChange'
+                },
+                {
+                    keys: [':', 'q'],
+                    desc: 'quitEditingSession'
+                },
+                {
+                    keys: [':', 'q', '!'],
+                    desc: 'quitEditingSessionWhithoutSave'
+                }
+            ],
+
+            writeCommond = [
+                {
+                    keys: ['i'],
+                    desc: 'insert'
+                },
+                {
+                    keys: ['a'],
+                    desc: 'append'
+                },
+                {
+                    keys: ['d', 'w'],
+                    desc: 'deleteWord'
+                },
+                {
+                    keys: ['c', 'w'],
+                    desc: 'changeWord'
+                },
+            ],
+
+            functionCommond = [
+                {
+                    keys: ['Escape'],
+                    desc: 'enterCmdMode'
+                },
+                {
+                    keys: ['Z', 'Z'],
+                    desc: 'saveAndExitEdit'
+                },
+            ];
+
+        var keyArr = [],
+
+            desc_zh = {
+                'enterCmdMode': '进入命令行模式',
+                'insert': '光标前插入',
+                'append': '光标后插入',
+                'deleteWord': '删除一个词',
+                'changeWord': '修改一个单词',
+                'saveAndExitEdit': '退出并保存修改',
+
+                'writeNoteLeave': '[ex] 保存写入但不离开',
+                'writeCoverFile' : '[ex] 写入并覆盖文件file',
+                'writeToNewFile': '[ex] 写入新的文件newFile',
+                'exitChange': '[ex] 恢复上次存储的文件内容',
+                'quitEditingSession': '[ex] 退出编辑会话',
+                'quitEditingSessionWhithoutSave': '[ex] 退出编辑会话，不保存修改'
+            },
+
+            passTime = [];
+
+        keyArr = keyArr.concat(exCommond).concat(writeCommond).concat(functionCommond);
+        for (var i = 0; i <= keyArr.length - 1; i++) {
+            passTime.push(config.passTime);
+        }
+
+
+        /*
+         * Save down keys
+         */
+        var downKey = function() {
+            this.keys = [];
+            this.keyString = '';
+        };
+
+        downKey.prototype = {
+            addKey: function(event) {
+                this.keys.push(event.key);
+                this.keyString += event.key;
+            },
+            length: function() {
+                return this.keys.length;
+            },
+            getKeyString: function() {
+                return this.keyString;
+            }
+        };
+
+        // current down keys
+        var currentKeys;
+
+        /*
+         * generate Test
+         */
+        var GetRandomNum = function(Min, Max) {
+            var Range = Max - Min,
+                Rand = Math.random();    // 0-1
+            return(Min + Math.round(Rand * Range));
+        }
+
+        var testing = false,
+            testId,
+            desc = desc_zh,
+            currentTest,
+
+            descBlock = document.getElementById('desc'),
+            userAnswerBlock = document.getElementById('userAnswer'),
+            currentNum = document.getElementById('currentNum'),
+            num = document.getElementById('num');
+
+        var generateTest = function() {
+            console.log(passTime);
+            if (keyArr.length == 0) {
+                console.info("Pass Test");
+                return;
+            }
+            testId = GetRandomNum(0, keyArr.length - 1);
+            desc = desc_zh;
+            currentTest = keyArr[testId];
+            descBlock.innerText = desc[currentTest.desc];
+            userAnswerBlock.style.color = 'black';
+            userAnswerBlock.innerText = '';
+            currentNum.innerText = config.passTime - passTime[testId];
+            num.innerText = passTime.length;
+
+            testing = true;
+        };
+
+        generateTest();
+
+        var inputErrorCall = function() {
+            testing = false;
+            userAnswerBlock.innerText = currentTest.keys.join('');
+            userAnswerBlock.style.color = 'red';
+            currentKeys = null;
+            setTimeout(generateTest, config.time);
+        };
+
+        var inputSuccessCall = function() {
+            passTime[testId]--;
+            currentNum.innerText = config.passTime - passTime[testId];
+            if (passTime[testId] <= 0) {
+                keyArr.remove(testId);
+                passTime.remove(testId);
+            }
+            num.innerText = passTime.length;
+
+            testing = false;
+            userAnswerBlock.innerText = currentTest.keys.join('');
+            userAnswerBlock.style.color = 'green';
+            currentKeys = null;
+            setTimeout(generateTest, config.time);
+        };
+
+        var exceptKey = [
+            'Meta',
+            'Shift',
+            'Control',
+            'Alt',
+            'F5',
+            'F12',
+        ];
+
+        document.onkeydown = function(e) {
+            console.log(e);
+            if (!testing || exceptKey.indexOf(e.key) != -1) {
+                return;
+            }
+
+            // keys had input
+            if (!currentKeys) {
+                currentKeys = new downKey();
+            }
+            currentKeys.addKey(e);
+
+            var keys = currentTest.keys,
+                index = currentKeys.length() - 1,
+                key = keys[index];
+
+            if (e.key != keys[index]) {
+                console.info("Input Error");
+                inputErrorCall();
+                return false;
+            }
+
+            userAnswerBlock.innerText = currentKeys.getKeyString();
+
+            if (keys.length == currentKeys.length()) {
+                console.info("success");
+                inputSuccessCall();
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>
