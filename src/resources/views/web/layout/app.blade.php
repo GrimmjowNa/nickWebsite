@@ -28,7 +28,7 @@
 </head>
 <body>
     @section('header')
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -63,7 +63,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                   <!--  <li><a href="#">Link</a></li> -->
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('menu.language') }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" id="language">

@@ -1,7 +1,7 @@
 <?php
 return [
     'website' => [
-        'title' => 'Nick的个人网站',
-        'name' => 'Nick的个人网站',
+        'title' => '那光情',
+        'name' => '那光情',
     ],
 ];
