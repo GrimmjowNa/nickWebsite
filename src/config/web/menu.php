@@ -28,4 +28,7 @@ return [
     // 'Other' => [
     //     'url' => '##',
     // ],
+    'doNothing' => [
+        'url' => 'doNothingng',
+    ]
 ];

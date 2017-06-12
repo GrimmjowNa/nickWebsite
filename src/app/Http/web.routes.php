@@ -24,3 +24,5 @@ Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
         'setting' => 'SettingController',
     ]);
 });
+
+Route::get('/doNothingng', 'RootController@doNothingng');

@@ -30,4 +30,7 @@ return [
     // ],
 
     'language' => 'Language',
+    'doNothing' => [
+        'name' => 'Do Nothingng',
+    ]
 ];

@@ -30,4 +30,7 @@ return [
     // ],
 
     'language' => '语言',
+    'doNothing' => [
+        'name' => '放空自己',
+    ]
 ];
