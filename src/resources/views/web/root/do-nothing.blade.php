@@ -10,5 +10,14 @@
 @endsection
 
 @section('main')
-<button type="button" class="btn btn-info">{{ trans('page.doNothing.exit') }}</button>
+<button type="button" class="btn btn-info again-btn">{{ trans('page.doNothing.again') }}</button>
+<button type="button" class="btn btn-info exit-btn">{{ trans('page.doNothing.exit') }}</button>
+<div class="panel panel-default time-panel">
+    <div class="panel-body">
+    </div>
+</div>
+
+<audio autoplay="autoplay" loop="loop">
+  <source src="{{ asset('/static/image/do-nothing/1.ogg') }}" type="audio/ogg" />
+</audio>
 @endsection
