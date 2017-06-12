@@ -1,7 +1,7 @@
 <?php
 return [
     'website' => [
-        'title' => 'Nick Na',
-        'name' => 'Nick Na',
+        'title' => 'Site name',
+        'name' => 'Site name',
     ],
 ];
