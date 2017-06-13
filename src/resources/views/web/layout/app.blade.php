@@ -89,7 +89,7 @@
     <footer>
         <div class="container copyright">
             <div class="row text-center">
-                ©2016.08 - {{ date('Y.m') }} NickNa 版权所有 <a href="mailto:naguangqing@qq.com">naguangqing@qq.com</a>
+                ©2016.08 - {{ date('Y.m') }} Nick Na <a href="mailto:naguangqing@qq.com">naguangqing@qq.com</a>
             </div>
         </div>
     </footer>

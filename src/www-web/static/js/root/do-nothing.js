@@ -36,6 +36,8 @@ require(['../config'], function () {
 
         $(document).mousemove(function(e){
             time = DEFAULT_TIME;
+        }).mousedown(function(e) {
+            time = DEFAULT_TIME;
         }).keydown(function (event) {
             time = DEFAULT_TIME;
         });
