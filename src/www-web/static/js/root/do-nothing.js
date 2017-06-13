@@ -1,5 +1,5 @@
 require(['../config'], function () {
-    require(['jquery', 'underscore', 'block', 'bootstrap'], function ($, _, Block) {
+    require(['jquery', 'underscore', 'util', 'bootstrap'], function ($, _, util) {
         var DEFAULT_TIME = 2 * 60;
 
         var getTimeText = function (time) {
@@ -58,14 +58,8 @@ require(['../config'], function () {
         var domin = window.location.origin;
             staticPath = domin + '/static/image/do-nothing/';
 
-        var GetRandomNum = function(min, max) {
-            var range = max - min,
-                rand = Math.random();
-            return(min + Math.round(rand * range));
-        }
-
         var toggleTheme = function () {
-            var rand = GetRandomNum(1, 5),
+            var rand = util.GetRandomNum(1, 5),
                 bgUrl = staticPath + rand + '.gif',
                 audio = staticPath + rand + '.wav';
             $('body').css({'background-image': 'url(' + bgUrl + ')'});

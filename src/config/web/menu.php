@@ -29,6 +29,9 @@ return [
     //     'url' => '##',
     // ],
     'doNothing' => [
-        'url' => 'doNothingng',
-    ]
+        'url' => 'doNothing',
+    ],
+    'eyeExercises' => [
+        'url' => 'eyeExercises',
+    ],
 ];

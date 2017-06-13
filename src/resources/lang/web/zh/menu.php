@@ -32,5 +32,8 @@ return [
     'language' => '语言',
     'doNothing' => [
         'name' => '木头人',
-    ]
+    ],
+    'eyeExercises' => [
+        'name' => '眼保健操',
+    ],
 ];

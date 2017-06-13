@@ -16,6 +16,7 @@ require.config({
         'bootstrap': 'libs/bootstrap/js/bootstrap.min',
         'underscore': 'libs/underscore-min',
 
+        'util': 'js/common/util',
         'block': 'js/common/block'
     }
 });

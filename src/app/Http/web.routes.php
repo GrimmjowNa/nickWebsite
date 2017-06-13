@@ -25,4 +25,5 @@ Route::group(['prefix' => 'service', 'namespace' => 'Service'], function () {
     ]);
 });
 
-Route::get('/doNothingng', 'RootController@doNothingng');
+Route::get('/doNothing', 'RootController@doNothing');
+Route::get('/eyeExercises', 'RootController@eyeExercises');

@@ -32,5 +32,8 @@ return [
     'language' => 'Language',
     'doNothing' => [
         'name' => 'Do Nothingng',
-    ]
+    ],
+    'eyeExercises' => [
+        'name' => 'Eye Exercises'
+    ],
 ];
