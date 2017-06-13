@@ -10,6 +10,7 @@
 @endsection
 
 @section('main')
+<button type="button" class="btn btn-info theme-btn">{{ trans('page.doNothing.toggleTheme') }}</button>
 <button type="button" class="btn btn-info again-btn">{{ trans('page.doNothing.again') }}</button>
 <button type="button" class="btn btn-info exit-btn">{{ trans('page.doNothing.exit') }}</button>
 <div class="panel panel-default time-panel">
@@ -17,7 +18,7 @@
     </div>
 </div>
 
-<audio autoplay="autoplay" loop="loop">
+<audio id="bg-audio" autoplay="autoplay" loop="loop">
   <source src="{{ asset('/static/image/do-nothing/1.ogg') }}" type="audio/ogg" />
 </audio>
 @endsection

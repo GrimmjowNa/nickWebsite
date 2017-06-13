@@ -1,28 +1,33 @@
 require(['../config'], function () {
     require(['jquery', 'underscore', 'block', 'bootstrap'], function ($, _, Block) {
-        DEFAULT_TIME = 2 * 60;
-        var time = DEFAULT_TIME;
+        var DEFAULT_TIME = 2 * 60;
 
-        var instance,
-            run = function () {
-            if (time < 0) {
-                time = DEFAULT_TIME;
-                $('.time-panel').html('Success!');
-                clearTimeout(instance);
-                instance = null;
-                $('.again-btn').removeClass('disabled')
-                return
-            }
+        var getTimeText = function (time) {
             var m = parseInt(time / 60),
                 s = time % 60 == 0 ? '00' : time % 60;
-            $('.time-panel').html(m + ':' + s);
-            time--;
+            return m + ':' + s;
         };
 
+        var time = DEFAULT_TIME,
+            instance,
+
+            run = function () {
+                if (time < 0) {
+                    clearTimeout(instance);
+                    instance = null;
+                    time = DEFAULT_TIME;
+
+                    $('.time-panel').html('Success!');
+                    $('.again-btn').removeClass('disabled')
+                    return;
+                }
+
+                $('.time-panel').html(getTimeText(time));
+                time--;
+            };
+
         $(function() {
-            var m = parseInt(time / 60),
-                s = time % 60 == 0 ? '00' : time % 60;
-            $('.time-panel').html(m + ':' + s);
+            $('.time-panel').html(getTimeText(time));
 
             $('header, footer').animate({'opacity': 0}, 2000);
             $('.again-btn').addClass('disabled')
@@ -46,5 +51,26 @@ require(['../config'], function () {
         $('.exit-btn').on('click', function () {
             window.location.href = '/';
         })
+
+        // Toggle theme
+        var domin = window.location.origin;
+            staticPath = domin + '/static/image/do-nothing/';
+
+        var GetRandomNum = function(min, max) {
+            var range = max - min,
+                rand = Math.random();
+            return(min + Math.round(rand * range));
+        }
+
+        var toggleTheme = function () {
+            var rand = GetRandomNum(1, 5),
+                bgUrl = staticPath + rand + '.gif',
+                audio = staticPath + rand + '.wav';
+            $('body').css({'background-image': 'url(' + bgUrl + ')'});
+            $('#bg-audio source').prop('src', audio)
+            console.log(rand, bgUrl, audio);
+        }
+
+        $('.theme-btn').on('click', toggleTheme);
     });
 });
