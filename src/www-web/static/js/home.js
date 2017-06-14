@@ -9,8 +9,8 @@ require(['config'], function () {
         var domin = window.location.origin,
             staticPath = domin + '/static/image/home/',
             tipTitle = MESSAGE.title,
-            closeTime = 10 * 1000,
-            intervalTime = 30 * 60,
+            closeTime = 5 * 1000,
+            intervalTime = 40 * 60 * 1000,
             doNothingUrl = domin + '/doNothing',
             eyeExercisesUrl = domin + '/eyeExercises',
             activities = [
@@ -21,7 +21,8 @@ require(['config'], function () {
                         icon: staticPath + 'doNothing.jpg',
                         body: MESSAGE.doNothing
                     },
-                    url: domin + '/doNothing'
+                    url: domin + '/doNothing',
+                    weight: 2
                 },
                 {
                     name: 'doEyeExercises',
@@ -30,7 +31,8 @@ require(['config'], function () {
                         icon: staticPath + 'doEyeExercises.jpg',
                         body: MESSAGE.doEyeExercises
                     },
-                    url: domin + '/eyeExercises'
+                    url: domin + '/eyeExercises',
+                    weight: 1
                 },
                 {
                     name: 'moveBody',
@@ -39,7 +41,8 @@ require(['config'], function () {
                         icon: staticPath + 'moveBody.jpg',
                         body: MESSAGE.moveBody
                     },
-                    url: domin + '/moveBody'
+                    url: domin + '/moveBody',
+                    weight: 2
                 },
                 {
                     name: 'music',
@@ -48,9 +51,15 @@ require(['config'], function () {
                         icon: staticPath + 'music.jpg',
                         body: MESSAGE.music
                     },
-                    url: domin + '/music'
+                    url: domin + '/music',
+                    weight: 0
                 }
             ];
+
+        var weightSum = 0;
+        for (var i = 0; i < activities.length; i++) {
+            weightSum = weightSum + activities[i].weight;
+        }
 
         var instance = function () {
             var index = util.GetRandomNum(0, 2),
@@ -58,7 +67,8 @@ require(['config'], function () {
 
             notify.onclick = function(){
                 window.focus();
-                // window.location.href = activities[index].url;
+                notify.close();
+                window.open(activities[index].url);
             };
 
             notify.onshow = function () {
@@ -70,6 +80,6 @@ require(['config'], function () {
 
         // instance();
 
-        window.setTimeout(instance, intervalTime); 
+        window.setInterval(instance, intervalTime); 
     });
 });
